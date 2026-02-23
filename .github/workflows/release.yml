@@ -1,0 +1,40 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    name: Build and publish release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Ensure executable permissions
+        run: chmod +x scripts/build.sh ra2fnt/ra2fnt-linux-amd64
+
+      - name: Build game.fnt
+        run: ./scripts/build.sh
+
+      - name: Prepare release assets
+        run: |
+          mkdir -p dist
+          cp game.fnt dist/game.fnt
+          sha256sum dist/game.fnt > dist/game.fnt.sha256
+          zip -j "dist/ImprovedFont-${GITHUB_REF_NAME}.zip" dist/game.fnt dist/game.fnt.sha256
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: |
+            dist/game.fnt
+            dist/game.fnt.sha256
+            dist/ImprovedFont-${{ github.ref_name }}.zip

@@ -1,0 +1,10 @@
+/game.fnt
+/ra2fnt.exe
+/ra2fnt-darwin-amd64
+/ra2fnt-darwin-arm64
+/ra2fnt-linux-amd64
+/ra2fnt-linux-arm64
+/ra2fnt-windows-amd64.exe
+/ra2fnt-windows-arm64.exe
+!/ra2fnt/
+!/ra2fnt/**

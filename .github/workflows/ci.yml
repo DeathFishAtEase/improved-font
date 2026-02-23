@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    tags-ignore:
+      - "v*"
+
+jobs:
+  build-font:
+    name: Build font
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Ensure executable permissions
+        run: chmod +x scripts/build.sh ra2fnt/ra2fnt-linux-amd64
+
+      - name: Build game.fnt
+        run: ./scripts/build.sh
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: game-fnt
+          path: game.fnt
+          if-no-files-found: error
