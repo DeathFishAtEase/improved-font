@@ -2,6 +2,8 @@
 
 This repository contains the **ImprovedFont** font for `Command & Conquer: Red Alert 2` from the [Phobos](https://github.com/Phobos-developers/Phobos) project.
 
+> Draft status: this project is currently a draft and is under discussion.
+
 ## Structure
 
 The font is built from PNG images located in the `src` directory.
@@ -48,3 +50,9 @@ Release assets:
 
 You can download `ra2fnt` from the releases of this repository:
 https://github.com/Belonit/ra2fnt
+
+## Credits
+
+- Kerbiter#3128 (Metadorius)
+- wiktorderelf#6546
+- Uranusian#0653 (Thrifinesma)
